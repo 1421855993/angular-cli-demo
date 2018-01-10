@@ -1,0 +1,26 @@
+<!--<div *ngIf="hero">
+  <h2>{{hero.name}} details!</h2>
+  <div>
+    <label>id: </label>{{hero.id}}
+  </div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="hero.name" placeholder="name"/>
+  </div>
+  <button (click)="goBack()">返回</button>
+</div>-->
+
+<div *ngIf="datas.length !== 0">
+  <ul style="list-style: none">
+    <li *ngFor="let data of datas" style="padding: 5px">
+      <span>{{data.id}}</span> {{data.name}}
+    </li>
+  </ul>
+  <ul style="list-style: none;bottom: 0;display: flex;position: absolute;" class="page">
+    <li (click)="turnPage(0)" [class.disabled]="currentPage === 0">首页</li>
+    <li (click)="turnPage(currentPage - 1)" [class.disabled]="currentPage === 0">上一页</li>
+    <li *ngFor="let page of pages" (click)="turnPage(page)" [class.selected]="page === currentPage" >{{page + 1}}</li>
+    <li (click)="turnPage(currentPage + 1)" [class.disabled]="currentPage === lastPage - 1" >下一页</li>
+    <li (click)="turnPage(lastPage - 1)" [class.disabled]="currentPage === lastPage - 1">末页</li>
+  </ul>
+</div>
